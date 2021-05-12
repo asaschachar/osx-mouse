@@ -6,6 +6,7 @@ const char* RIGHT_DOWN = "right-down";
 const char* RIGHT_UP = "right-up";
 const char* MIDDLE_DOWN = "middle-down";
 const char* MIDDLE_UP = "middle-up";
+const char* SCROLL = "scroll";
 const char* MOVE = "move";
 const char* LEFT_DRAG = "left-drag";
 const char* RIGHT_DRAG = "right-drag";
@@ -13,6 +14,7 @@ const char* RIGHT_DRAG = "right-drag";
 bool IsMouseEvent(CGEventType type) {
 	return type == kCGEventLeftMouseDown ||
 		type == kCGEventLeftMouseUp ||
+		type == kCGEventScrollWheel ||
 		type == kCGEventRightMouseDown ||
 		type == kCGEventRightMouseUp ||
     type == kCGEventOtherMouseDown ||
@@ -107,6 +109,7 @@ void Mouse::Run() {
 		CGEventMaskBit(kCGEventRightMouseDown) |
 		CGEventMaskBit(kCGEventRightMouseUp) |
 		CGEventMaskBit(kCGEventOtherMouseDown) |
+    CGEventMaskBit(kCGEventScrollWheel) |
 		CGEventMaskBit(kCGEventOtherMouseUp) |
 		CGEventMaskBit(kCGEventMouseMoved) |
 		CGEventMaskBit(kCGEventLeftMouseDragged) |
@@ -198,6 +201,7 @@ void Mouse::HandleSend() {
 		if(e.type == kCGEventOtherMouseDown) name = MIDDLE_DOWN;
 		if(e.type == kCGEventOtherMouseUp) name = MIDDLE_UP;
 		if(e.type == kCGEventMouseMoved) name = MOVE;
+		if(e.type == kCGEventScrollWheel) name = SCROLL;
 		if(e.type == kCGEventLeftMouseDragged) name = LEFT_DRAG;
 		if(e.type == kCGEventRightMouseDragged) name = RIGHT_DRAG;
 
