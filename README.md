@@ -30,3 +30,8 @@ E.g. in *macOS Catalina* when running from *Terminal*:
 
 1. Open `System Preferences > Security & Privacy > Input Monitoring`
 2. Add *Terminal* to the list
+
+
+# Todo
+
+Integrate with https://github.com/Hammster/native-mouse/tree/master/source
